@@ -6,4 +6,7 @@
 ### 3: 
 #####Entity RecipeIngredient added + tested
 
+### 4:
+#####Entity RecipeCategory added + tested
+
 
