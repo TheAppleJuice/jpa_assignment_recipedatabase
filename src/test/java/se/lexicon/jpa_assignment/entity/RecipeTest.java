@@ -66,6 +66,7 @@ class RecipeTest {
         testCategoryA = new RecipeCategory(1, "categoryNameA",testObjectCollection);
         testCategoryB = new RecipeCategory(2, "categoryNameB", testObjectCollection);
 
+
         // Collection of recipe categories
         testRecipeCategoryCollection = new ArrayList<>();
         testRecipeCategoryCollection.add(testCategoryA);
