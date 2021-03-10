@@ -7,20 +7,20 @@ import java.util.Objects;
 public class RecipeCategory {
 
     private int Id;
-    private String recipeName;
-    Collection<Recipe> recipeCollection;
+    private String categoryName;
+    List<Recipe> recipeCollection;
 
     public RecipeCategory() {
     }
 
-    public RecipeCategory(String recipeName, Collection<Recipe> recipeCollection) {
-        this.recipeName = recipeName;
+    public RecipeCategory(String categoryName, List<Recipe> recipeCollection) {
+        this.categoryName = categoryName;
         this.recipeCollection = recipeCollection;
     }
 
-    public RecipeCategory(int id, String recipeName, Collection<Recipe> recipeCollection) {
+    public RecipeCategory(int id, String categoryName, List<Recipe> recipeCollection) {
         Id = id;
-        this.recipeName = recipeName;
+        this.categoryName = categoryName;
         this.recipeCollection = recipeCollection;
     }
 
@@ -32,19 +32,19 @@ public class RecipeCategory {
         Id = id;
     }
 
-    public String getRecipeName() {
-        return recipeName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Collection<Recipe> getRecipeCollection() {
+    public List<Recipe> getRecipeCollection() {
         return recipeCollection;
     }
 
-    public void setRecipeCollection(Collection<Recipe> recipeCollection) {
+    public void setRecipeCollection(List<Recipe> recipeCollection) {
         this.recipeCollection = recipeCollection;
     }
 
@@ -53,19 +53,19 @@ public class RecipeCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RecipeCategory that = (RecipeCategory) o;
-        return Id == that.Id && Objects.equals(recipeName, that.recipeName) && Objects.equals(recipeCollection, that.recipeCollection);
+        return Id == that.Id && Objects.equals(categoryName, that.categoryName) && Objects.equals(recipeCollection, that.recipeCollection);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, recipeName, recipeCollection);
+        return Objects.hash(Id, categoryName, recipeCollection);
     }
 
     @Override
     public String toString() {
         return "RecipeCategory{" +
                 "Id=" + Id +
-                ", recipeName='" + recipeName + '\'' +
+                ", recipeName='" + categoryName + '\'' +
                 ", recipeCollection=" + recipeCollection +
                 '}';
     }

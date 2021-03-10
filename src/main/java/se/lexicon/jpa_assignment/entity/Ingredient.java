@@ -1,6 +1,5 @@
 package se.lexicon.jpa_assignment.entity;
 
-import javax.persistence.*;
 import java.util.Objects;
 
 //@Entity

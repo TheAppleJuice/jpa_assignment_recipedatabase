@@ -13,7 +13,7 @@ public class RecipeIngredient {
     @GeneratedValue (generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
-    private UUID Id;
+    private UUID Id;  //todo: String or UUID?
 
     private Ingredient ingredient;
     private double measure;

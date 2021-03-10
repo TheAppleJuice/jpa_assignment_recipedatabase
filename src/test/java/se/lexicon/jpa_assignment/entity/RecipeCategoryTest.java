@@ -1,6 +1,5 @@
 package se.lexicon.jpa_assignment.entity;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,7 @@ class RecipeCategoryTest {
     Recipe a;
     Recipe b;
     RecipeCategory testObject;
-    Collection<Recipe> recipeCollectionTest;
+    List<Recipe> recipeCollectionTest;
 
 
     @BeforeEach
@@ -24,7 +23,7 @@ class RecipeCategoryTest {
 
         testObject = new RecipeCategory();
         testObject.setId(1);
-        testObject.setRecipeName("A");
+        testObject.setCategoryName("A");
 
 
         recipeCollectionTest = new ArrayList<>();
@@ -41,7 +40,7 @@ class RecipeCategoryTest {
     @DisplayName("Test create object")
     public void test1(){
         assertEquals(1, testObject.getId());
-       assertEquals("A", testObject.getRecipeName());
+       assertEquals("A", testObject.getCategoryName());
        assertEquals(2, testObject.getRecipeCollection().size());
 
 
