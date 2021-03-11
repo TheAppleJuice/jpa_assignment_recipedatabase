@@ -2,20 +2,24 @@ package se.lexicon.jpa_assignment.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class RecipeInstruction {
+
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator")
+
     @Column(name = "id", updatable = false, nullable = false)
     private String Id;
+
+    @Column(nullable = false)
     private String instructions;
+
 
 
     public RecipeInstruction() {

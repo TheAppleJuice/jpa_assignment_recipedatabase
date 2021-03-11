@@ -5,8 +5,10 @@
 #####Entity Enum Measurement added + tested
 ### 3: 
 #####Entity RecipeIngredient added + tested
-
 ### 4:
 #####Entity RecipeCategory added + tested
-
+### 5:
+#####Entity RecipeInstrucitons added, NOT tested
+### 6:
+#####Working on relationship mapping
 

@@ -2,26 +2,36 @@ package se.lexicon.jpa_assignment.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
-//TODO: Fix errors from UUID...
 
 @Entity
 public class RecipeIngredient {
+
     @Id
     @GeneratedValue (generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     @Column(name = "id", updatable = false, nullable = false)
     private String Id;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
-    private double measure;
-    private Measurement measurementType;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn (name = "recipe_id")
     private Recipe recipe;
+
+    @Column(nullable = true)
+    private double measure;
+
+    @Column(nullable = false)
+    private Measurement measurementType;
+
+
 
     public RecipeIngredient() {
     }

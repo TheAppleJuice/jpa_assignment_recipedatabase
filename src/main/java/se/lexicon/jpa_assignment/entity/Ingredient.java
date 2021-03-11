@@ -5,11 +5,15 @@ import java.util.Objects;
 
 @Entity
 public class Ingredient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column(nullable = false,length = 255,unique = true)
+
+    @Column(nullable = false,unique = true)
     private String ingredient;
+
+
 
     public Ingredient() {
     }

@@ -1,10 +1,6 @@
 package se.lexicon.jpa_assignment.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,11 +9,29 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
+
+    @Column(nullable = false,unique = true)
     private String recipeName;
-    private List<RecipeIngredient> ingredientCollection; //todo: automagical removal?
+
+    @OneToMany(orphanRemoval = true, fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
+    @JoinColumn(name = "recipe_ingredient_id")
+    private List<RecipeIngredient> ingredientCollection;
+
+    @OneToOne
+    @JoinColumn(name = "recipe_instruction_id")
     private RecipeInstruction recipeInstruction;
-    //TODO: add all relationship mapping
+
+    @ManyToMany
+    @JoinTable (name = "recipe_recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_category_id")
+
+    )
     private List<RecipeCategory> recipeCategoryCollection;
+
+
+
+
 
     public Recipe() {
     }

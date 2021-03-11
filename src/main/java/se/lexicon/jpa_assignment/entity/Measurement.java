@@ -1,20 +1,19 @@
 package se.lexicon.jpa_assignment.entity;
 
 public enum Measurement {
-    ML(1), CL(2), DL(3), KG(4), TESKED(5), MATSKED(6), GRAM(7);
+    ML("ml"), CL("cl"), DL("dl"), KG("kg"), TESKED("tesked"), MATSKED("matsked"), GRAM("gr");
 
-    //TODO: Can change int to String!. type -measurement
-    private int type;
+    private String type;
 
-    Measurement(int type) {
+    Measurement(String type) {
         this.type = type;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
-    //TODO: Setter not mandatory. You set it from the constructor
-    public void setType(int type) {
+
+    public void setType(String type) {
         this.type = type;
     }
 
