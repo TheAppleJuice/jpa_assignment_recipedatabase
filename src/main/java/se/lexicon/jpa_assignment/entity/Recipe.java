@@ -18,7 +18,7 @@ public class Recipe {
     private List<RecipeIngredient> ingredientCollection;
 
     @OneToOne
-    @JoinColumn(name = "recipe_instruction_id")
+    @JoinColumn(name = "recipe_instruction_id", unique = true)
     private RecipeInstruction recipeInstruction;
 
     @ManyToMany
