@@ -5,10 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +31,7 @@ class RecipeTest {
     RecipeCategory testCategoryB;
     List<RecipeCategory> testRecipeCategoryCollection;
 
-    UUID testUUID;
+    String testUUID;
 
 
     @BeforeEach
@@ -91,10 +88,13 @@ class RecipeTest {
     }
 
     @Test
-    @DisplayName("Test equal")
+    @DisplayName("Test is present")
     public void test2 (){
-        RecipeCategory expected = new RecipeCategory(1, "categoryNameA",testObjectCollection);
-        assertTrue(testObjectA.getRecipeCategoryCollection().contains(expected));
+        RecipeCategory expected = new RecipeCategory(1, "categoryNameA",null);
+        Optional<RecipeCategory> actual = testObjectA.getRecipeCategoryCollection().stream().filter(recipeCategory -> recipeCategory.getCategoryName().equalsIgnoreCase("categoryNameA")).findFirst();
+       assertTrue(actual.isPresent());
+        assertEquals(expected, actual.get());
+
 
 
     }

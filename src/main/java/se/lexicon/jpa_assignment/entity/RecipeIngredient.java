@@ -3,17 +3,20 @@ package se.lexicon.jpa_assignment.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
+//TODO: Fix errors from UUID...
 
+@Entity
 public class RecipeIngredient {
     @Id
     @GeneratedValue (generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
-    private UUID Id;  //todo: String or UUID?
+    private String Id;
 
     private Ingredient ingredient;
     private double measure;
@@ -30,7 +33,7 @@ public class RecipeIngredient {
         this.recipe = recipe;
     }
 
-    public RecipeIngredient(UUID id, Ingredient ingredient, double measure, Measurement measurementType, Recipe recipe) {
+    public RecipeIngredient(String id, Ingredient ingredient, double measure, Measurement measurementType, Recipe recipe) {
         Id = id;
         this.ingredient = ingredient;
         this.measure = measure;
@@ -38,11 +41,11 @@ public class RecipeIngredient {
         this.recipe = recipe;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         Id = id;
     }
 
-    public UUID getId() {
+    public String getId() {
         return Id;
     }
 

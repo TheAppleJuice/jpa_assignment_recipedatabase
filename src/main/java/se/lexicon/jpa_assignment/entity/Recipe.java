@@ -1,14 +1,22 @@
 package se.lexicon.jpa_assignment.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Recipe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String recipeName;
     private List<RecipeIngredient> ingredientCollection; //todo: automagical removal?
     private RecipeInstruction recipeInstruction;
+    //TODO: add all relationship mapping
     private List<RecipeCategory> recipeCategoryCollection;
 
     public Recipe() {

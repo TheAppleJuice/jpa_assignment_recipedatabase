@@ -12,7 +12,7 @@ class RecipeIngredientTest {
 
     RecipeIngredient testObject;
     Ingredient testIngredient;
-    UUID testUUID;
+    String testUUID;
 
     @BeforeEach
     public void setup(){

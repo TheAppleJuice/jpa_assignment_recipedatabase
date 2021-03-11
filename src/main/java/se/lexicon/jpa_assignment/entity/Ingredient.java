@@ -1,13 +1,14 @@
 package se.lexicon.jpa_assignment.entity;
 
+import javax.persistence.*;
 import java.util.Objects;
 
-//@Entity
+@Entity
 public class Ingredient {
-    //@Id
-    //@GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    //@Column(nullable = false,length = 255,unique = true)
+    @Column(nullable = false,length = 255,unique = true)
     private String ingredient;
 
     public Ingredient() {
