@@ -14,7 +14,7 @@ public class RecipeCategory {
     @Column(nullable = false, unique = true)
     private String categoryName;
 
-    @ManyToMany
+    @ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
     @JoinTable (
             name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "recipe_category_id"),

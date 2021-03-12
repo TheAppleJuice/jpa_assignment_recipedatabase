@@ -25,7 +25,6 @@ public class IngredientRepositoryTest {
         ingredient = new Ingredient(1,"ingredientA");
         testObject.save(ingredient);
 
-
     }
 
     @Test

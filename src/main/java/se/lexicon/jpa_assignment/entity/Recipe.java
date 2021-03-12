@@ -17,11 +17,11 @@ public class Recipe {
     @JoinColumn(name = "recipe_ingredient_id")
     private List<RecipeIngredient> ingredientCollection;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_instruction_id", unique = true)
     private RecipeInstruction recipeInstruction;
 
-    @ManyToMany
+    @ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
     @JoinTable (name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_category_id")

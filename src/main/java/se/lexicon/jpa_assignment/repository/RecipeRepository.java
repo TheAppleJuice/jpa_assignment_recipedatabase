@@ -18,14 +18,13 @@ Search for all recipes that belong to a specific recipe category. e.g. Chicken, 
 Search for all recipes that match one or more categories. e.g. {”Spicy”,”Mexican”,”Weekend”}
  */
 
-    @Query("select a from Recipe a where a.recipeName like '%recipeName%'")
-    List<Recipe> findRecipeByRecipeName (@Param("recipeName") String recipeName);
+    List<Recipe> findRecipesByRecipeNameContains (String recipeName);
 
-    @Query("select a from RecipeIngredient a where a.ingredient = :ingredient")
-    List<RecipeIngredient> searchAllRecipeByIngredientQuery(@Param("ingredient") String ingredient);
+    List<Recipe> findRecipesByIngredientCollection_Ingredient_Ingredient (String ingredient);
 
-    @Query("select a from RecipeCategory a where a.categoryName = :categoryName")
-    List<RecipeCategory> searchAllRecipeByCategoryQuery(@Param("categoryName") String categoryName);
+    List<Recipe> findRecipesByRecipeCategoryCollection (String recipeName);
+
+
 
 
 

@@ -85,9 +85,8 @@ public class RecipeRepositoryTest {
         // RecipeInstruction recipeInstruction,
         // List<RecipeCategory> recipeCategoryCollection
         // )
-        testRecipeA = new Recipe( "Recipe 1",testIngredientCollection, testInstructionA,testRecipeCategoryCollection);
-
-        //testRecipeB = new Recipe(2, "Recipe 2", testIngredientCollection, testInstructionB, testRecipeCategoryCollection);
+        testRecipeA = new Recipe( "Recipe1", testIngredientCollection, testInstructionA, testRecipeCategoryCollection);
+        testRecipeB = new Recipe( "Pizza", testIngredientCollection, testInstructionB, testRecipeCategoryCollection);
 
         // Collection of recipes
         testRecipeCollection = new ArrayList<>();
@@ -97,26 +96,37 @@ public class RecipeRepositoryTest {
         //testObjectRecipeRepository.saveAll(testRecipeCollection);
 
 
-        result=testObjectRecipeRepository.save(testRecipeA);
-        System.out.println("result = " + result.getId());
-        //testObjectRecipeRepository.save(testRecipeA);
+       // result=testObjectRecipeRepository.save(testRecipeA);
+        //System.out.println("result = " + result.getId());
+
+        testObjectRecipeRepository.save(testRecipeA);
+        testObjectRecipeRepository.save(testRecipeB);
     }
 
     @Test
     @DisplayName("Test find By id")
     public void test1(){
 
-        testObjectRecipeRepository.findById(result.getId());
-       // Assertions.assertEquals(1, testObjectRecipeRepository.findById(1).get().getId());
+       // testObjectRecipeRepository.findById(result.getId());
+       Assertions.assertEquals(1, testObjectRecipeRepository.findById(1).get().getId());
 
     }
    @Test
     @DisplayName("Test find by name contains")
     public void test2(){
-       //List <Recipe> result = testObjectRecipeRepository.findRecipeByRecipeName("Recipe 1");
-       //result.forEach(System.out::println);
-
-       //Assertions.assertEquals("Recipe 1", result);
+        List<Recipe> listResipe = testObjectRecipeRepository.findRecipesByRecipeNameContains("cip");
+        Assertions.assertEquals(1, listResipe.size());
 
    }
+
+   @Test
+    public void findRecipes_IngredientCollection_Ingredient_Ingredient (){
+        testObjectRecipeRepository.findRecipesByIngredientCollection_Ingredient_Ingredient("Ingredient A");
+   }
+
+   @Test
+    public void findRecipesByRecipeCategoryCollection(){
+        testObjectRecipeRepository.findRecipesByRecipeCategoryCollection("Starters");
+   }
+
 }
