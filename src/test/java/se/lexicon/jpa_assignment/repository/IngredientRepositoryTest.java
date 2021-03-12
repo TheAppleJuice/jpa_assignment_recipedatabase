@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import se.lexicon.jpa_assignment.entity.Ingredient;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,11 +31,15 @@ public class IngredientRepositoryTest {
     @Test
     @DisplayName("Testing find Ingredient By Ingredient")
     public void test1(){
-       Optional<Ingredient> ingredient = testObject.findIngredientByIngredient("ingredientA");
-       assertTrue(ingredient.isPresent());
-       assertEquals("ingredientA", ingredient.get().getIngredient());
+       List<Ingredient> ingredient = testObject.findIngredientByIngredient("ingredientA");
+       ingredient.forEach(System.out::println);
+
     }
 
-
+    @Test
+    public void findIngredientsByIngredientContains (){
+        List<Ingredient> result = testObject.findIngredientsByIngredientContains("dien");
+        result.forEach(System.out::println);
+    }
 
 }

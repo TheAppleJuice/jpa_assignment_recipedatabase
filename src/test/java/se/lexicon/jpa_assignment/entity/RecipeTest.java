@@ -25,7 +25,6 @@ class RecipeTest {
 
     RecipeInstruction testInstructionA;
     RecipeInstruction testInstructionB;
-    List<RecipeInstruction> testRecipeList;
 
     RecipeCategory testCategoryA;
     RecipeCategory testCategoryB;
@@ -54,10 +53,6 @@ class RecipeTest {
         testInstructionA = new RecipeInstruction(); //null
         testInstructionB = new RecipeInstruction();
 
-        //Lists of Recipe instructions
-        testRecipeList = new ArrayList<>();
-        testRecipeList.add(testInstructionA);
-        testRecipeList.add(testInstructionB);
 
         // Recipe category
         testCategoryA = new RecipeCategory(1, "categoryNameA",testObjectCollection);
