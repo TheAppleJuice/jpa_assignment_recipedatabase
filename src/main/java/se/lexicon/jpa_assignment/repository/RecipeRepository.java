@@ -14,15 +14,18 @@ public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 /*
 OK. Search for recipes where recipe name contains specified String.
 OK. Search for all recipes that contains a specified ingredient name. e.g. potato, tomato, salt, etc.
-Search for all recipes that belong to a specific recipe category. e.g. Chicken, Vegan, Celebration, Weekend etc.
-Search for all recipes that match one or more categories. e.g. {”Spicy”,”Mexican”,”Weekend”}
+OK. Search for all recipes that belong to a specific recipe category. e.g. Chicken, Vegan, Celebration, Weekend etc.
+OK. Search for all recipes that match one or more categories. e.g. {”Spicy”,”Mexican”,”Weekend”}
  */
 
     List<Recipe> findRecipesByRecipeNameContains (String recipeName);
 
     List<Recipe> findRecipesByIngredientCollection_Ingredient_Ingredient (String ingredient);
 
-    List<Recipe> findRecipesByRecipeCategoryCollection (String recipeName);
+    List<Recipe> findRecipesByRecipeCategoryCollectionCategoryName (String categoryName);
+
+    List<Recipe> findRecipesByRecipeCategoryCollection_RecipeCollection_RecipeName (String recipeName);
+
 
 
 

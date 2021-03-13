@@ -40,12 +40,10 @@ public class RecipeRepositoryTest {
     RecipeCategory testCategoryB;
     List<RecipeCategory> testRecipeCategoryCollection;
 
-
-
     Recipe result;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
 
         // Ingredient
         testIngredientA = new Ingredient("Ingredient A");
@@ -62,16 +60,18 @@ public class RecipeRepositoryTest {
 
         // Recipe instruction
         testInstructionA = new RecipeInstruction("Instruction A");
-        //testInstructionB = new RecipeInstruction("Instruction B");
+        testInstructionB = new RecipeInstruction("Instruction B");
 
-        //Lists of Recipe instructions
+/*        //Lists of Recipe instructions
         testRecipeList = new ArrayList<>();
         testRecipeList.add(testInstructionA);
         testRecipeList.add(testInstructionB);
 
+ */
+
         // Recipe category
         testCategoryA = new RecipeCategory( "Starters", testRecipeCollection);
-        testCategoryB = new RecipeCategory( "Main course", testRecipeCollection);
+       // testCategoryB = new RecipeCategory( "Main course", testRecipeCollection);
 
 
         // Collection of recipe categories
@@ -79,26 +79,16 @@ public class RecipeRepositoryTest {
         testRecipeCategoryCollection.add(testCategoryA);
         testRecipeCategoryCollection.add(testCategoryB);
 
-        // Recipe(
-           // String recipeName,
-        // List<RecipeIngredient> ingredientCollection,
-        // RecipeInstruction recipeInstruction,
-        // List<RecipeCategory> recipeCategoryCollection
-        // )
+        // Recipe
         testRecipeA = new Recipe( "Recipe1", testIngredientCollection, testInstructionA, testRecipeCategoryCollection);
-        testRecipeB = new Recipe( "Pizza", testIngredientCollection, testInstructionB, testRecipeCategoryCollection);
+       // testRecipeB = new Recipe( "Pizza", testIngredientCollection, testInstructionB, testRecipeCategoryCollection);
 
         // Collection of recipes
         testRecipeCollection = new ArrayList<>();
         testRecipeCollection.add(testRecipeA);
         testRecipeCollection.add(testRecipeB);
 
-        //testObjectRecipeRepository.saveAll(testRecipeCollection);
-
-
-       // result=testObjectRecipeRepository.save(testRecipeA);
-        //System.out.println("result = " + result.getId());
-
+        // Save to repository
         testObjectRecipeRepository.save(testRecipeA);
         testObjectRecipeRepository.save(testRecipeB);
     }
@@ -112,21 +102,28 @@ public class RecipeRepositoryTest {
 
     }
    @Test
-    @DisplayName("Test find by name contains")
-    public void test2(){
+    public void findRecipesByRecipeNameContains(){
         List<Recipe> listResipe = testObjectRecipeRepository.findRecipesByRecipeNameContains("cip");
-        Assertions.assertEquals(1, listResipe.size());
 
    }
 
    @Test
     public void findRecipes_IngredientCollection_Ingredient_Ingredient (){
-        testObjectRecipeRepository.findRecipesByIngredientCollection_Ingredient_Ingredient("Ingredient A");
+        Assertions.assertEquals("Pizza",testObjectRecipeRepository.findRecipesByIngredientCollection_Ingredient_Ingredient("Ingredient A").get(0).getRecipeName());
    }
 
    @Test
     public void findRecipesByRecipeCategoryCollection(){
-        testObjectRecipeRepository.findRecipesByRecipeCategoryCollection("Starters");
+        Assertions.assertEquals("Recipe1", testObjectRecipeRepository.findRecipesByRecipeCategoryCollectionCategoryName("Starters").get(0).getRecipeName());
+   }
+
+   @Test
+    public void findRecipesByRecipeCategoryCollectionContainsRecipeName(){
+      //Assertions.assertEquals("Recipe1",testObjectRecipeRepository.findRecipesByRecipeCategoryCollection_RecipeCollection_RecipeName("Starters"));
+      // List<Recipe> result =
+      testObjectRecipeRepository.findRecipesByRecipeCategoryCollection_RecipeCollection_RecipeName("Starters");
+       //Assertions.assertEquals(2, result.size());
+
    }
 
 }
